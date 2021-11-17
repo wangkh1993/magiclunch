@@ -32,26 +32,48 @@ class PickLunch(object):
             ingredients = json.loads(f.read())
         # Handle empty file here
 
-        return ingredients.get('ingredients')
+        return ingredients
 
     def get_ingredients(self, ingredients):
-        in_ingres = []
-        for ing in ingredients:
-            if self.check_date(ing.get('use-by')):
-                if self.check_date(ing.get('best-before')):
-                    in_ingres.append({ing.get('title'): 1})
+        if ingredients and ingredients.get('ingredients'):
+            in_ingres = []
+            for ing in ingredients.get('ingredients'):
+                if self.check_date(ing.get('use-by')):
+                    if self.check_date(ing.get('best-before')):
+                        in_ingres.append({'ingredient': ing.get('title'), 'weight': 1})
+                    else:
+                        in_ingres.append({'ingredient': ing.get('title'), 'weight': 100})
                 else:
-                    in_ingres.append({ing.get('title'): 100})
-            else:
-                continue
-        return in_ingres
+                    continue
+            return in_ingres
+        else:
+            raise(TypeError('Input ingredients JSON is an empty file! Please verify'))
 
+    def match_recipe(self, in_ingredients):
+        out_recipes = []
+        ings_candidates = [i.get('ingredient') for i in in_ingredients]
+
+        ings_bestbefore = [i.get('ingredient') for i in in_ingredients if i.get('weight') == 100]
+        for recipe, ingredients in self.new_recipes.items():
+            if all(ing in ings_candidates for ing in ingredients):
+                if any(ing in ings_bestbefore for ing in ingredients):
+                    out_recipes.append(recipe)
+                else:
+                    out_recipes.insert(0, recipe)
+        output = {}
+        for out_recipe in out_recipes:
+            output[out_recipe] = self.new_recipes.get(out_recipe)
+
+        return output
 
 
 if __name__ == '__main__':
     obj = PickLunch()
-    print(obj.new_recipes)
-    ing_json = "../data/ingredients.json"
-    ings = obj.get_ingredients(obj.load_ingredients(ing_json))
-    for i in ings:
-        print(i.keys())
+    # print(obj.new_recipes)
+    user_input = input('Please provide your ingredients JSON file\n')
+    # ing_json = "../data/ingredients.json"
+    ings = obj.get_ingredients(obj.load_ingredients(user_input))
+    # print(ings)
+
+    choice = obj.match_recipe(ings)
+    print(choice)
