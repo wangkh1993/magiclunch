@@ -2,7 +2,7 @@
    "recipes": [
        {
            "title": "Ham and Cheese Sandwich",
-           "ingredients": ["Ham", "Cheese", "Bread", "Butter"],
+           "ingredients": ["Ham", "Cheese", "Bread", "Butter"]
        },
        {
            "title": "Big Breakfast",
@@ -12,8 +12,8 @@
                "Baked Beans",
                "Mushrooms",
                "Sausage",
-               "Bread",
-           ],
+               "Bread"
+           ]
        },
        {
            "title": "Salad",
@@ -22,12 +22,12 @@
                "Tomato",
                "Cucumber",
                "Beetroot",
-               "Salad Dressing",
-           ],
+               "Salad Dressing"
+           ]
        },
        {
            "title": "Hotdog",
-           "ingredients": ["Hotdog Bun", "Sausage", "Ketchup", "Mustard"],
-       },
+           "ingredients": ["Hotdog Bun", "Sausage", "Ketchup", "Mustard"]
+       }
    ]
 }
