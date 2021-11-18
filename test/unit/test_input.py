@@ -1,8 +1,7 @@
 import unittest
 import os, sys
-# print(os.getcwd())
+
 sys.path.append(os.getcwd())
-# print(os.getcwd())
 
 from main.main import *
 

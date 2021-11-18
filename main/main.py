@@ -114,4 +114,3 @@ if __name__ == "__main__":
         ings = obj.get_ingredients(obj.load_ingredients(user_input))
         choice = obj.match_recipe(ings)
         print(choice)
-
