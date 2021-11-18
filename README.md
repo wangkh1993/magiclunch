@@ -6,6 +6,7 @@ Place input JSON files into `data` directory if you would like to run in Docker 
 Otherwise, run `main/main.py` and input JSON file as per hint
 
 ## Project Structure
+```
 magiclunch
 ├── data
 │   ├── ingredients.json
@@ -22,7 +23,7 @@ magiclunch
 │       ├── test_input2.json
 │       ├── test_input3.json
 │       └── __init__.py
-
+```
 ## Files
 `main.py`: application file, contains PickLunch class for producing correct recipe.
 `requirements.txt`: python dependencies 
