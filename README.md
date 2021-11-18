@@ -26,8 +26,11 @@ magiclunch
 ```
 ## Files
 `main.py`: application file, contains PickLunch class for producing correct recipe.
+
 `requirements.txt`: python dependencies 
+
 `test_input.py`: unittest 
+
 `test_input.json`: sample input for unittest
 
 ## Running using Docker
@@ -47,8 +50,10 @@ Run below command for unittest:
 
 ## Running Using Local Python Env
 Module was built using Python 3.7. Use `pip` to install dependencies
+
 ```pip install -r requirements.txt```
 
 Firing up application:
+
 ``` python .\main\main.py```
 
